@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import StepList from './components/StepList';
 
 function App() {
+  const [step, setStep]=useState(0);
+
+  const handleNext = () => {
+    setStep(prevStep => (prevStep < 4 ? prevStep + 1 : prevStep));
+  };
+
+  const handlePrev = () => {
+    setStep(prevStep => (prevStep > 1 ? prevStep - 1 : prevStep));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className='btn' onClick={handlePrev}>Prev</button>
+      <button className='btn' onClick={handleNext}>Next</button>
+      <StepList currentStep={step}/>
+      <label>QA:{step}</label>
     </div>
   );
 }
