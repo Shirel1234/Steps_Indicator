@@ -4,10 +4,11 @@ import './App.css';
 import StepList from './components/StepList';
 
 function App() {
+  const totalSteps=7;
   const [step, setStep]=useState(0);
 
   const handleNext = () => {
-    setStep(prevStep => (prevStep < 4 ? prevStep + 1 : prevStep));
+    setStep(prevStep => (prevStep < totalSteps ? prevStep + 1 : prevStep));
   };
 
   const handlePrev = () => {
@@ -17,7 +18,7 @@ function App() {
     <div className="App">
       <button className='btn' onClick={handlePrev}>Prev</button>
       <button className='btn' onClick={handleNext}>Next</button>
-      <StepList currentStep={step}/>
+      <StepList currentStep={step} totalSteps={totalSteps}/>
       <label>QA:{step}</label>
     </div>
   );
