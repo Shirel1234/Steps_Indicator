@@ -16,8 +16,8 @@ function App() {
   };
   return (
     <div className="App">
-      <button className='btn' onClick={handlePrev}>Prev</button>
-      <button className='btn' onClick={handleNext}>Next</button>
+      <button className='btn' disabled={ step <= 1 ? true : false} onClick={handlePrev}>Prev</button>
+      <button className='btn' disabled={ step >= totalSteps ? true : false} onClick={handleNext}>Next</button>
       <StepList currentStep={step} totalSteps={totalSteps}/>
       <label>QA:{step}</label>
     </div>
